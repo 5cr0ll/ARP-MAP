@@ -555,7 +555,11 @@ int main(int argc, char *argv[]) {
                 menu();
                 break;
             default:
-                handle_arp_map(index - 1);
+                if (command <= index) {
+                handle_arp_map(command - 1);
+                } else {
+                    printf("Incorrect index, 0-%d only!", index);
+                }
         }
     }
     freeifaddrs(ifaddr);
